@@ -1,8 +1,10 @@
+const Discord = require("discord.js");
+const client = new Discord.Client();
 client.on('message', message => {
             if(!message.channel.guild) return;
 let args = message.content.split(' ').slice(1).join(' ');
 if (message.content.startsWith('+msgall')){ // هو البريفكس و يمكنك تغييره في أي وقت +
- if(!message.author.id === 'الايدي حقك') return; // حط الايدي حقك عشان تكون الوحيد الي يقدر يستخدم الأمر
+ if(!message.author.id === '518816831734022154') return; // حط الايدي حقك عشان تكون الوحيد الي يقدر يستخدم الأمر
 message.channel.sendMessage(' جار ارسال الرسالة | ✅')
 client.users.forEach(m =>{
 m.sendMessage(args)
@@ -11,7 +13,7 @@ m.sendMessage(args)
 });
 
           client.on('message', message => {
-            var prefix = "البريفكس"; //Snow Codes
+            var prefix = "+"; //Snow Codes
                   if(!message.channel.guild) return;
         if(message.content.startsWith(prefix + 'bc')) {
         if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط ل السيرفرات**').then(m => m.delete(5000));
