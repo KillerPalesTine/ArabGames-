@@ -3,7 +3,7 @@ const client = new Discord.Client();
  
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-   client.user.setActivity("m%help |ArabGamesMusic",{type: 'Streaming'})
+   client.user.setGame(`%help | ArabGames`,"http://twitch.tv/Death Shop")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
