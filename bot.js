@@ -3,7 +3,7 @@ const client = new Discord.Client();
  
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-   client.user.setGame(`%help | ArabGames`,"http://twitch.tv/Death Shop")
+   client.user.setGame(`m%help | ArabGames`,"http://twitch.tv/Death Shop")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -342,6 +342,29 @@ function play(guild, song) {
 })
 }
 });
+
+
+client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content ==="m%help") {
+         message.channel.send('**تم ارسالك في الخاص**');
+            
+    
+         
+
+
+ message.author.sendMessage(`
+ **
+m%play
+m%stop
+m%vol
+m%skip
+**
+`);
+
+    }
+});
+
 
 
 
