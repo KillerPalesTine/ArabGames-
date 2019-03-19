@@ -1,32 +1,3 @@
-﻿const Discord = require('discord.js');
-const client = new Discord.Client();
- 
-client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!`);
-   client.user.setGame(`%mhelp | ArabGames`,"http://twitch.tv/Death Shop")
-  console.log('')
-  console.log('')
-  console.log('╔[═════════════════════════════════════════════════════════════════]╗')
-  console.log(`[Start] ${new Date()}`);
-  console.log('╚[═════════════════════════════════════════════════════════════════]╝')
-  console.log('')
-  console.log('╔[════════════════════════════════════]╗');
-  console.log(`Logged in as * [ " ${client.user.username} " ]`);
-  console.log('')
-  console.log('Informations :')
-  console.log('')
-  console.log(`servers! [ " ${client.guilds.size} " ]`);
-  console.log(`Users! [ " ${client.users.size} " ]`);
-  console.log(`channels! [ " ${client.channels.size} " ]`);
-  console.log('╚[════════════════════════════════════]╝')
-  console.log('')
-  console.log('╔[════════════]╗')
-  console.log(' Bot Is Online')
-  console.log('╚[════════════]╝')
-  console.log('')
-  console.log('')
-});
- 
 const moment = require('moment')
 const ytdl = require("ytdl-core");
 const { Client, Util } = require('discord.js');
@@ -51,6 +22,12 @@ npm install simple-youtube-api
 npm install queue
 */
 
+client.on('ready', () => {//the ready msgs
+    console.log(`Logged in as ${client.user.tag}!`);
+    console.log(`in ${client.guilds.size} servers `)
+    console.log(`[ ] ${client.users.size}`)
+client.user.setGame(`m%play | ArabGames`,"http://twitch.tv/Death Shop")
+});
 
 client.on('message', async msg => {
 	if (msg.author.bot) return undefined;
@@ -342,32 +319,3 @@ function play(guild, song) {
 })
 }
 });
-
-
-client.on('message', message => {
-    if (message.author.bot) return;
-     if (message.content ==="%mhelp") {
-         message.channel.send('**تم ارسالك في الخاص**');
-            
-    
-         
-
-
- message.author.sendMessage(`
- **
-m%play
-m%stop
-m%vol
-m%skip
-**
-`);
-
-    }
-});
-
-
-
-
-
-
-client.login(process.env.BOT_TOKEN);
