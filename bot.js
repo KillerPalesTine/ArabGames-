@@ -3,7 +3,7 @@ const client = new Discord.Client();
  
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-   client.user.setGame(`m%help | ArabGames`,"http://twitch.tv/Death Shop")
+   client.user.setGame(`%mhelp | ArabGames`,"http://twitch.tv/Death Shop")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -346,7 +346,7 @@ function play(guild, song) {
 
 client.on('message', message => {
     if (message.author.bot) return;
-     if (message.content ==="m%help") {
+     if (message.content ==="%mhelp") {
          message.channel.send('**تم ارسالك في الخاص**');
             
     
