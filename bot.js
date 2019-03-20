@@ -267,6 +267,137 @@ const emojis   = { arrow: `${client.guilds.find(r => r.id === '55350869142536194
 });
 
 
+client.on("guildMemberAdd", member => {
+  member.createDM().then(function (channel) {
+  return channel.send(`ولكم نورت السيرفر
+ ${member}  
+ `) 
+}).catch(console.error)
+})
+
+
+const devs = ["518816831734022154"]// ايدي الخاص بحسابك
+ 
+const adminprefix = "$";//Narox
+client.on('message', message => {
+    var argresult = message.content.split(` `).slice(1).join(' ');
+      if (!devs.includes(message.author.id)) return;
+     
+  if (message.content.startsWith(adminprefix + 'pt')) {
+    client.user.setGame(argresult);
+      message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
+  } else
+    if (message.content === (adminprefix + "Percie")) {
+    message.guild.leave();        
+  } else  
+  if (message.content.startsWith(adminprefix + 'wt')) {// لجعل البوت في حاله الواتشنق
+  client.user.setActivity(argresult, {type:'WATCHING'});
+      message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
+  } else
+  if (message.content.startsWith(adminprefix + 'setprefix')) {//لتغير البريفكس
+  client.user.setPrefix(argresult).then
+      message.channel.send(`**Prefix Changed :white_check_mark: ${argresult}** `)
+  } else
+  if (message.content.startsWith(adminprefix + 'ls')) {// لجعل البوت في حاله الاستماع
+  client.user.setActivity(argresult , {type:'LISTENING'});
+      message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
+  } else     //Narox
+    if (message.content.startsWith(adminprefix + 'setname')) {// لتغير اسم البوت
+  client.user.setUsername(argresult).then
+      message.channel.sendMessage(`**${argresult}** : Done `)
+  return message.reply("**Name Changed :white_check_mark:**");
+  } else
+    if (message.content.startsWith(adminprefix + 'setavatar')) {// لتغير صوره البوت
+  client.user.setAvatar(argresult);
+    message.channel.sendMessage(`**${argresult}** : تم تغير صورة البوت`);
+        } else    
+  if (message.content.startsWith(adminprefix + 'st')) {// لعمل ستريمنق للبوت
+    client.user.setGame(argresult, "https://www.twitch.tv/idk");
+      message.channel.sendMessage(`**:white_check_mark:   ${argresult}**`)
+  }
+    if(message.content === adminprefix + "restart") {// لعمل ريسترت للبوت
+      if (!devs.includes(message.author.id)) return;
+          message.channel.send(`:warning:️ **Bot restarting by ${message.author.username}**`);
+        console.log("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        console.log(`⚠️ Bot restarting... ⚠️`);
+        console.log("===============================================\n\n");
+        client.destroy();
+        child_process.fork(__dirname + "/bot.js");
+        console.log(`Bot Successfully Restarted`);
+    }
+ 
+  });
+
+
+client.on("message", msg => {//Alpha Codes 
+    var Alpha = '$';//البرفكس
+    if(msg.content.startsWith(Alpha + "inv")){//Alpha Codes 
+        let e = new Discord.RichEmbed()//Alpha Codes 
+        .setTitle("**اضافه البوت لسيرفرك**")//Alpha Codes 
+       .setDescription(`**📬 | اذا تريد البوت يرسلك الرابط بخاصك
+       📇 | اذا تريد البوت يرسلك الرابط هنا بالشات**`)
+        msg.channel.send(e).then(b => {
+            b.react('📇')
+            .then(() => b.react('📬'))
+            .then(() =>b.react('📇'))
+            let reaction1Filter = (reaction, user) => reaction.emoji.name === '📇' && user.id === msg.author.id;
+let reaction2Filter = (reaction, user) => reaction.emoji.name === '📬' && user.id === msg.author.id;
+
+let reaction1 = b.createReactionCollector(reaction1Filter, { time: 12000 });
+let reaction2 = b.createReactionCollector(reaction2Filter, { time: 12000 });
+reaction1.on("collect", r => {
+msg.reply(`https://discordapp.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot`)
+b.delete(2000)
+})
+reaction2.on("collect", r => {
+    msg.author.send(`${msg.author} https://discordapp.com/api/oauth2/authorize?client_id=${client.user.id}&permissions=8&scope=bot`)
+    b.delete(2000)
+    msg.reply("**تم ارسال الرابط في خاصك 📬**").then(d => {
+        d.delete(2000)
+    })
+    })
+        })
+    }
+});
+
+
+client.on('message', message => { //RayGamerMC BotInfo Code
+    if (message.content.startsWith("$bot")) { // "+bot" هو البريفكس ب إمكانك تغييره في أي وقت في +
+    message.channel.send({ //Snow Codes RayGamerMC
+        embed: new Discord.RichEmbed()
+            .setAuthor(client.user.username,client.user.avatarURL)
+            .setThumbnail(client.user.avatarURL)
+            .setColor('RANDOM') //Snow Codes
+            .setTitle('``Informations Of [ArabGames]`` ')
+            .addField('``My Ping``' , [`${Date.now() - message.createdTimestamp}` + 'MS'], true) //البنق
+            .addField('``RAM Usage``', `[${(process.memoryUsage().rss / 1048576).toFixed()}MB]`, true) //الرام المستخدمة
+            .addField('``servers``', [client.guilds.size], true) //عدد السيرفرات الي البوت موجود فيها
+            .addField('``Users``' ,`[ ${client.users.size} ]` , true) //عدد مستخدمي البوت
+            .addField('``My Name``' , `[ ${client.user.tag} ]` , true) //اسم البوت
+            .addField('``My ID``' , `[ ${client.user.id} ]` , true) // ايدي البوت
+                  .addField('``My Prefix``' , `[ % ]` , true) //بريفكس البوت
+                  .addField('``My Language``' , `[ Java Script ]` , true) //لغة البوت
+                  .setFooter('By | KillerPalesTine') //اسم الي صنع البوت
+    })
+}
+}); //كود معلومات البوت مطور
+
+
+client.on('message', message => {
+            if(!message.channel.guild) return;
+let args = message.content.split(' ').slice(1).join(' ');
+if (message.content.startsWith('$msgall')){ // هو البريفكس و يمكنك تغييره في أي وقت +
+ if(!message.author.id === '518816831734022154') return; // حط الايدي حقك عشان تكون الوحيد الي يقدر يستخدم الأمر
+message.channel.sendMessage(' جار ارسال الرسالة | ✅')
+client.users.forEach(m =>{
+m.sendMessage(args)
+})
+}
+});
+
+
+
+
 
 
  
