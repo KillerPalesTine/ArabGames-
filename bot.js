@@ -11,7 +11,7 @@ client.on('ready', () => {
       console.log(`ON ${client.guilds.size} Servers '     Script By : ArabGames ' `);
     console.log(`----------------`);
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`$help | ArabGames`,"http://twitch.tv/Death Shop")
+client.user.setGame(`$help | Dream`,"http://twitch.tv/Death Shop")
 client.user.setStatus("online")
 });
 
@@ -250,22 +250,25 @@ const pubg = [
 });
 
 
-client.on('message',async message => {
-const emojis   = { arrow: `${client.guilds.find(r => r.id === '553508691425361940').emojis.find(e => e.name === 'arrow')}` };
+client.on('message', message => { ///////// ALPHA  , Codes ///// Galal
+    if (message.content.startsWith("qhelp")) { ///////// ALPHA  , Codes ///// Galal
 
-       if (message.content.startsWith($ + "help")) {
-        
-       message.channel.send(`** • قـــائمة الاومر ** :
-       ${emojis.arrow}, **| ${prefix}help-games ⇏ \`$سرعة!\`
-       ${emojis.arrow}, **| ${prefix}help-games ⇏ \`$برنامج!\`
-       ${emojis.arrow}, **| ${prefix}help-games ⇏ \`$pubg!\`
-        ${emojis.arrow},  | ${prefix}help-games ⇏ \`ألعاب!\`** `)
+message.author.send(` 
+**__الاوامــر __** 🔐 
+**
+${prefix} يحط لك صورة لعبة وانت لازم تعرف اسمها | ألعاب
+${prefix} سرعة | اسرع كتابة 
+${prefix} يجيبلك برنامج وانت لازم ما هو اسمه| برنامج
+${prefix} pubg |لعبة اسئلة باتل جراوند
+${prefix} inv |لدعوة البوت الى سيرفرك
+${prefix} bot |معلومات عن البوت
+
+**
+`) ///////// ALPHA , Codes ///// Galal
 
 
-   }
-
-});
-
+    }
+}); ///////// ALPHA , Codes ///// Galal
 
 client.on("guildMemberAdd", member => {
   member.createDM().then(function (channel) {
